@@ -25,7 +25,7 @@ create table specialization (
     id integer primary key,
     name varchar(50),
     code varchar(50),
-    program_id references program(id)
+    program_id integer references program(id)
 );
 
 create table subdivision (
@@ -36,7 +36,7 @@ create table subdivision (
 create table group_info (
     id integer primary key,
     name varchar(50),
-    year_name references year(name), 
+    year_name varchar(4) references year(name),
     subdivision_name varchar(50) references subdivision(name),
     specialization_id integer references specialization(id),
     courseNumber integer
@@ -96,7 +96,7 @@ create table result (
     id integer primary key,
     subject_name  varchar(100) references subject(name),
     mark_value integer references mark(name),
-    student_id references student(id)
+    student_id integer references student(id)
 );
 
 
