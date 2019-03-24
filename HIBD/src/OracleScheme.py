@@ -11,6 +11,8 @@ class OracleScheme:
         self.Subject_oracle = self.oracle_config.Base.classes.subject
         self.Subdivision_oracle = self.oracle_config.Base.classes.subdivision
         self.Employee_oracle = self.oracle_config.Base.classes.employee
+        self.Group_oracle = self.oracle_config.Base.classes.group_info
+        self.Specialization_oracle = self.oracle_config.Base.classes.specialization
 
 
 

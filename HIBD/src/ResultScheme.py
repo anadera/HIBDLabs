@@ -22,14 +22,33 @@ class ResultScheme:
         self.Reading_list_result = self.result_config.Base.classes.reading_list
         self.Subject_result = self.result_config.Base.classes.subject
         self.Project_member_result = self.result_config.Base.classes.project_members
+        self.Authors_result = self.result_config.Base.classes.authors
+        self.Conference_participants = self.result_config.Base.classes.conference_participants
+        # self.Group_Schedule_result = self.result_config.Base.classes.group_schedule
 
+
+    # It would be better to find new info in 4 database and update only new ones in the result db,
+    # but this needs quite more code and we don't have enougth time and people in the team, so I suggest to simply clear  result db
+    # and upload data again (we don't have to upload a lot of data to the database in the lab, so it won't need much time)
     def clear(self):
+        self.result_config.session.query(self.Reading_list_result).delete()
+        self.result_config.session.query(self.Authors_result).delete()
+        self.result_config.session.query(self.Publication_result).delete()
+        self.result_config.session.query(self.Conference_participants).delete()
+        self.result_config.session.query(self.Conference_info_result).delete()
+        self.result_config.session.query(self.Project_member_result).delete()
+        self.result_config.session.query(self.Scientific_project_result).delete()
+        # self.result_config.session.query(self.Group_Schedule_result).delete()
+        self.result_config.session.query(self.Schedule_result).delete()
+        self.result_config.session.query(self.Conference_result).delete()
+        self.result_config.session.query(self.Publisher_result).delete()
+        self.result_config.session.query(self.Student_result).delete()
+        self.result_config.session.query(self.Employee_result).delete()
+        self.result_config.session.query(self.Group_result).delete()
         self.result_config.session.query(self.Person_result).delete()
         self.result_config.session.query(self.Year_result).delete()
         self.result_config.session.query(self.Subject_result).delete()
+        self.result_config.session.query(self.Specialization_result).delete()
         self.result_config.session.query(self.Program_result).delete()
         self.result_config.session.query(self.Mark_result).delete()
-        self.result_config.session.query(self.Scientific_project_result).delete()
-        self.result_config.session.query(self.Conference_result).delete()
-        self.result_config.session.query(self.Publisher_result).delete()
         self.result_config.session.query(self.Subdivision_result).delete()

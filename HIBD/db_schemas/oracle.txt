@@ -14,7 +14,7 @@ CREATE TABLE Campus (
 CREATE TABLE Conference_info (
   id              number(10), 
   conference_name varchar2(100) NOT NULL, 
-  publisher_id    number(10) NOT NULL, 
+  publisher_id    number(10), 
   endDate         date NOT NULL, 
   startDate       date NOT NULL, 
   place           varchar2(100) NOT NULL,
@@ -161,7 +161,7 @@ CREATE TABLE Sanitization (
   
 CREATE TABLE Schedule (
   id           number(10), 
-  subject_name number(10) NOT NULL , 
+  subject_name varchar(25) NOT NULL , 
   teacher_id   number(10) NOT NULL , 
   dayOfWeek    number(7) NOT NULL , 
   startTime    timestamp(7) NOT NULL , 
@@ -185,7 +185,7 @@ CREATE TABLE Semester (
 CREATE TABLE Specialization (
   id         number(10), 
   name       varchar2(25) NOT NULL, 
-  code       number(10) NOT NULL UNIQUE, 
+  code       varchar2(20) NOT NULL UNIQUE,
   program_id number(10) NOT NULL, 
   PRIMARY KEY (id));
   
@@ -208,7 +208,7 @@ CREATE TABLE Student (
   group_id      number(10) NOT NULL , 
   type_of_study varchar2(10) NOT NULL, 
   form_of_study varchar2(10) NOT NULL, 
-  qualification varchar2(2) NOT NULL, 
+  qualification varchar2(2), 
   PRIMARY KEY (id),
   unique(person_id, group_id));
   
@@ -292,6 +292,6 @@ ALTER TABLE Specialization_program ADD CONSTRAINT FKSpecializa477402 FOREIGN KEY
 ALTER TABLE Results ADD CONSTRAINT FKResults28773 FOREIGN KEY (teacher_id) REFERENCES Employee (id);
 ALTER TABLE Results ADD CONSTRAINT FKResults587217 FOREIGN KEY (subject_name) REFERENCES Specialization_program (id);
 ALTER TABLE Specialization_program ADD CONSTRAINT FKSpecializa636672 FOREIGN KEY (main_teacher) REFERENCES Employee (id);
-ALTER TABLE Schedule ADD CONSTRAINT FKSchedule78646 FOREIGN KEY (subject_name) REFERENCES Specialization_program (id);
+ALTER TABLE Schedule ADD CONSTRAINT FKSchedule78646 FOREIGN KEY (subject_name) REFERENCES Subject (name);
 
 

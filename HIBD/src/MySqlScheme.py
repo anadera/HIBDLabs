@@ -8,3 +8,4 @@ class MySqlScheme:
         self.Scientific_project_mysql = self.my_sql_config.Base.classes.scientific_project
         self.Conference_mysql = self.my_sql_config.Base.classes.conference
         self.Publisher_mysql = self.my_sql_config.Base.classes.publisher
+        self.Conference_info_mysql = self.my_sql_config.Base.classes.conference_info
